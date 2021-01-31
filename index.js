@@ -5,7 +5,7 @@ function createWindow() {
   const icon = nativeImage.createFromPath(__dirname + "/assets/icon.icns");
   const win = new BrowserWindow({
     width: 1200,
-    height: 600,
+    height: 690,
     webPreferences: {
       nodeIntergration: true,
     },
