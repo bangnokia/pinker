@@ -1,0 +1,7 @@
+/builds 
+/node_modules
+/laravel/vendor
+/laravel/node_modules
+/psycho/vendor
+/psycho/.idea
+package-lock.json

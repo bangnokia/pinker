@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import "~codemirror/lib/codemirror.css";
+@import "~codemirror/theme/dracula.css";
+
+body, html {
+    font-size: 1rem;
+}
+.editor .CodeMirror {
+    height: 100%;
+}
