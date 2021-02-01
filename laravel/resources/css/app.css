@@ -8,6 +8,6 @@
 body, html {
     font-size: 1rem;
 }
-.editor .CodeMirror {
+.tinker .CodeMirror {
     height: 100%;
 }

@@ -16,6 +16,8 @@ class Output extends Component
         $process = new Process(['php', base_path('/../psycho/index.php'), '--target='.base_path(), "--code={$code}"]);
         $process->run();
         $this->output = $process->getOutput();
+
+        $this->emit('outputUpdated');
     }
 
     public function render()

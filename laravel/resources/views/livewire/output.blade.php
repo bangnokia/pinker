@@ -3,7 +3,7 @@
 
     <script>
         function makeCodeMirror() {
-            CodeMirror.fromTextArea(document.getElementById('output'), {
+            return CodeMirror.fromTextArea(document.getElementById('output'), {
                 mode: 'text/x-php',
                 lineNumbers: true,
                 lineWrapping: true,
@@ -15,13 +15,14 @@
         }
 
         document.addEventListener('livewire:load', function () {
-            makeCodeMirror();
+            const codeMirror = makeCodeMirror();
 
             Livewire.on('submit', code => {
                 Livewire.emit('execute', code)
             })
 
-            Livewire.hook('message.processed', (el, component) => {
+            Livewire.on('outputUpdated', (el, component) => {
+                console.log('output updated')
                 makeCodeMirror();
             })
         })
