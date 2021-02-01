@@ -6,7 +6,8 @@ fi
 
 cd laravel
 composer install
-php artisan:key-generate
+cp .env.example .env
+php artisan key:generate
 
 cd ../psycho
 composer install

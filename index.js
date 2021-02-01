@@ -1,5 +1,5 @@
 const { app, BrowserWindow, nativeImage } = require("electron");
-const { exec } = require("child_process");
+const { fork } = require("child_process");
 
 function createWindow() {
   const icon = nativeImage.createFromPath(__dirname + "/assets/icon.icns");
@@ -7,7 +7,7 @@ function createWindow() {
     width: 1200,
     height: 690,
     webPreferences: {
-      nodeIntergration: true,
+      contextIsolation: true
     },
     icon: icon,
   });
@@ -16,18 +16,14 @@ function createWindow() {
 }
 
 app.whenReady().then(() => {
-  exec(
-    "cd laravel && php artisan serve --port=6969",
-    (error, stdout, stderr) => {
-      console.log(stdout);
-      createWindow();
-    }
-  );
+  const forked = fork('serve.js');
+  createWindow();
 });
 
 app.on("window-all-closed", () => {
   if (process.platform !== "darwin") {
     app.quit();
+    forked.kill();
   }
 });
 
