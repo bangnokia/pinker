@@ -27,4 +27,12 @@ class Project extends Model
 
         return $project->tap(fn($project) => $project->save());
     }
+
+    public function setAsActive()
+    {
+        $this->update(['is_active' => true]);
+        Project::query()->where('id', '<>', $this->id)->update(['is_active' => false]);
+
+        return $this;
+    }
 }

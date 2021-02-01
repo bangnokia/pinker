@@ -26,6 +26,20 @@ class Tinker extends Component
         $this->projectName = basename($value);
     }
 
+    public function addProject()
+    {
+        $project =  new Project([
+            'name' => $this->projectName,
+            'path' => $this->projectPath,
+        ]);
+
+        $project->save();
+
+        $project->setAsActive();
+
+        $this->emit('projectChanged');
+    }
+
     public function toggleAddProject()
     {
         $this->showAddProject = !$this->showAddProject;

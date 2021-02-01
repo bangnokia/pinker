@@ -35,7 +35,7 @@
                     <label class="w-1/4" for="project-name">@lang('Name')</label>
                     <input type="text" class="w-1/2 border px-2" id="project-name" wire:model="projectName">
                     <div class="w-1/4 pl-2">
-                        <button class="px-3 bg-indigo-500 hover:bg-indigo-600 text-white font-sm">@lang('Add')</button>
+                        <button class="px-3 bg-indigo-500 hover:bg-indigo-600 text-white font-sm" wire:click="addProject">@lang('Add')</button>
                     </div>
                 </div>
             </div>
