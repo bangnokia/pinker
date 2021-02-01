@@ -8,7 +8,7 @@ cd laravel
 composer install
 cp .env.example .env
 php artisan key:generate
-touch databases/database.sqlite
+touch database/database.sqlite
 npm install
 
 cd ../psycho
