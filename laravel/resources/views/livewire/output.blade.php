@@ -1,5 +1,7 @@
 <div>
-    <textarea class="p-10 pr-0" id="output" wire:model="output"></textarea>
+    <div wire:ignore>
+        <textarea class="p-10 pr-0" id="output" wire:model="output"></textarea>
+    </div>
 
     <script>
         function makeCodeMirror() {
@@ -22,8 +24,7 @@
             })
 
             Livewire.on('outputUpdated', (el, component) => {
-                console.log('output updated')
-                makeCodeMirror();
+                codeMirror.getDoc().setValue(@this.output)
             })
         })
     </script>
