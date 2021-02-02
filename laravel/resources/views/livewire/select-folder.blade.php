@@ -19,5 +19,6 @@
     </div>
 
     <button class="bg-cyan-500 hover:bg-cyan-600 px-5 py-1 mt-3 text-white"
-            wire:click="selectDirectory">@lang('Select this directory')</button>
+            wire:click="selectDirectory">@lang('Open')</button>
+    <button class="bg-gray-400 hover:bg-gray-500 px-5 py-1 mt-3 text-white" wire:click="$emitUp('toggleAddProject')">@lang('Cancel')</button>
 </div>

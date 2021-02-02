@@ -7,10 +7,10 @@ use Livewire\Component;
 
 class Tinker extends Component
 {
-    public $showAddProject = false;
+    public $showAddProject = true;
     public $projectPath = '';
 
-    protected $listeners = ['changeDirectory'];
+    protected $listeners = ['changeDirectory', 'toggleAddProject'];
 
     public function getProjectProperty()
     {
@@ -24,12 +24,14 @@ class Tinker extends Component
 
     public function changeDirectory($directory)
     {
-        $project = Project::updateOrCreate(['path' => $directory], ['name' => basename($directory)]);
-        $project->save();
-        $project->setAsActive();
+        Project::query()
+            ->updateOrCreate(['path' => $directory], ['name' => basename($directory)])
+            ->setAsActive();
 
+        $this->showAddProject = false;
         $this->emit('projectChanged');
     }
+
 
     public function toggleAddProject()
     {
