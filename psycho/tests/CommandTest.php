@@ -1,6 +1,6 @@
 <?php
 
-namespace BelowCode\Psycho\Tests;
+namespace BangNokia\Psycho\Tests;
 
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Process\Process;

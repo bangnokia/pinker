@@ -1,8 +1,8 @@
 <?php
 
-namespace BelowCode\Psycho\Tests;
+namespace BangNokia\Psycho\Tests;
 
-use BelowCode\Psycho\Clockwerk;
+use BangNokia\Psycho\Clockwerk;
 use \PHPUnit\Framework\TestCase;
 
 class ClockwerkTest extends TestCase

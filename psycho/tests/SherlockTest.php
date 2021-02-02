@@ -1,10 +1,10 @@
 <?php
 
-namespace BelowCode\Psycho\Tests;
+namespace BangNokia\Psycho\Tests;
 
-use BelowCode\Psycho\Drivers\LaravelPsychoPsychoDriver;
-use BelowCode\Psycho\Drivers\PlanPsychoDriver;
-use BelowCode\Psycho\Sherlock;
+use BangNokia\Psycho\Drivers\LaravelPsychoPsychoDriver;
+use BangNokia\Psycho\Drivers\PlanPsychoDriver;
+use BangNokia\Psycho\Sherlock;
 use PHPUnit\Framework\TestCase;
 
 class SherlockTest extends TestCase

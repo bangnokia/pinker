@@ -1,9 +1,10 @@
 <section class="border-r-2 border-gray-500">
-    <textarea wire:model="code" id="editor"></textarea>
+    <div wire:ignore>
+        <textarea wire:model="code" id="editor"></textarea>
+    </div>
 
     <script type="text/javascript">
         document.addEventListener('livewire:load', function () {
-            Livewire.emit('submit');
             let config = {
                 mode: 'text/x-php',
                 lineNumbers: true,
@@ -21,7 +22,11 @@
                     }
                 }
             };
-            CodeMirror.fromTextArea(document.getElementById('editor'), config);
+            const codeMirror = CodeMirror.fromTextArea(document.getElementById('editor'), config);
+            @this.on('projectChanged', function () {
+                console.log('project changed', @this.code);
+                codeMirror.getDoc().setValue(@this.code);
+            })
         });
     </script>
 </section>

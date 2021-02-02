@@ -11,6 +11,10 @@ class Project extends Model
 
     protected $guarded = [];
 
+    protected $casts = [
+        'is_active' => 'boolean',
+    ];
+
     public static function current()
     {
         $current = self::where('is_active', true)->first();
@@ -20,8 +24,9 @@ class Project extends Model
         }
 
         $project = new Project([
-            'name'      => 'Default  laravel',
+            'name'      => 'Default',
             'path'      => base_path(),
+            'code'      => 'echo "hello";',
             'is_active' => true
         ]);
 

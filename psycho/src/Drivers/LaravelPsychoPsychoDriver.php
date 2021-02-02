@@ -1,7 +1,7 @@
 <?php
 
 
-namespace BelowCode\Psycho\Drivers;
+namespace BangNokia\Psycho\Drivers;
 
 
 class LaravelPsychoPsychoDriver extends PsychoDriver

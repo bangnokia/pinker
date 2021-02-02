@@ -4,7 +4,7 @@ include __DIR__.'/vendor/autoload.php';
 
 $arguments = getopt('', ['target:', 'code:']);
 
-$clockwerk = new BelowCode\Psycho\Clockwerk();
+$clockwerk = new BangNokia\Psycho\Clockwerk();
 
 $output = $clockwerk->bootstrapAt($arguments['target'])->execute(trim($arguments['code']));
 

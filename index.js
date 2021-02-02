@@ -33,6 +33,6 @@ app.on("active", () => {
   }
 });
 
-try {
-  require("electron-reloader")(module);
-} catch {}
+// try {
+//   require("electron-reloader")(module);
+// } catch {}

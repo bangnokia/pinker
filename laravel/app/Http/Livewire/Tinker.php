@@ -2,19 +2,15 @@
 
 namespace App\Http\Livewire;
 
-use Livewire\Component;
 use App\Models\Project;
+use Livewire\Component;
 
 class Tinker extends Component
 {
-    public $showAddProject = true;
-    public $projectPath =  '';
-    public $projectName =  '';
+    public $showAddProject = false;
+    public $projectPath = '';
 
-    public function mount()
-    {
-        $this->project = Project::current();
-    }
+    protected $listeners = ['changeDirectory'];
 
     public function getProjectProperty()
     {
@@ -26,15 +22,10 @@ class Tinker extends Component
         $this->projectName = basename($value);
     }
 
-    public function addProject()
+    public function changeDirectory($directory)
     {
-        $project =  new Project([
-            'name' => $this->projectName,
-            'path' => $this->projectPath,
-        ]);
-
+        $project = Project::updateOrCreate(['path' => $directory], ['name' => basename($directory)]);
         $project->save();
-
         $project->setAsActive();
 
         $this->emit('projectChanged');

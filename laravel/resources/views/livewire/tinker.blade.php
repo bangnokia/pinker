@@ -2,7 +2,7 @@
     <div class="tinker flex h-full w-full">
 
         <div class="w-1/2 editor">
-            <livewire:editor/>
+            <livewire:editor :code="$this->project->code ?? ''"/>
         </div>
 
         <div class="w-1/2">

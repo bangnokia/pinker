@@ -4,17 +4,21 @@ namespace App\Http\Livewire;
 
 use App\Models\Project;
 use Livewire\Component;
-use Symfony\Component\Process\Process;
 
 class Editor extends Component
 {
-    public string $code = '$name ="daudau"';
+    public string $code;
 
     protected $listeners = ['projectChanged'];
 
     public function projectChanged()
     {
-        $this->code = Project::current()->content ?? '';
+        $this->code = $this->project->content ?? '';
+    }
+
+    public function getProjectProperty()
+    {
+        return Project::current();
     }
 
     public function submit(string $code)

@@ -1,10 +1,10 @@
 <?php
 
-namespace BelowCode\Psycho;
+namespace BangNokia\Psycho;
 
-use BelowCode\Psycho\Drivers\LaravelPsychoPsychoDriver;
-use BelowCode\Psycho\Drivers\PlanPsychoDriver;
-use BelowCode\Psycho\Drivers\PsychoDriver;
+use BangNokia\Psycho\Drivers\LaravelPsychoPsychoDriver;
+use BangNokia\Psycho\Drivers\PlanPsychoDriver;
+use BangNokia\Psycho\Drivers\PsychoDriver;
 
 class Sherlock
 {

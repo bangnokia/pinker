@@ -17,7 +17,7 @@ class CreateProjectsTable extends Migration
             $table->id();
             $table->string('name')->nullable();
             $table->string('path')->unique();
-            $table->text('content')->nullable();
+            $table->text('code')->nullable();
             $table->boolean('is_active')->default(false);
             $table->timestamps();
         });

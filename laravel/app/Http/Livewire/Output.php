@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use Livewire\Component;
+use Symfony\Component\Process\PhpExecutableFinder;
 use Symfony\Component\Process\Process;
 
 class Output extends Component
@@ -13,7 +14,16 @@ class Output extends Component
 
     public function execute(string $code)
     {
-        $process = new Process(['php', base_path('/../psycho/index.php'), '--target='.base_path(), "--code={$code}"]);
+        $project = \App\Models\Project::current();
+        $project->update(['code' => $code]);
+
+        $process = new Process([
+            (new PhpExecutableFinder())->find(false),
+            base_path('../psycho/index.php'),
+            "--target={$project->path}",
+            "--code={$code}"
+        ]);
+
         $process->run();
         $this->output = $process->getOutput();
 

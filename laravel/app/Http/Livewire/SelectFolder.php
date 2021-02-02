@@ -23,6 +23,11 @@ class SelectFolder extends Component
 		$this->currentDirectory = realpath($directory);
 	}
 
+    public function selectDirectory()
+    {
+        $this->emit('changeDirectory', $this->currentDirectory);
+	}
+
     public function render()
     {
         return view('livewire.select-folder');

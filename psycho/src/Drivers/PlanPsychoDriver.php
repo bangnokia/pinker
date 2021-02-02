@@ -1,6 +1,6 @@
 <?php
 
-namespace BelowCode\Psycho\Drivers;
+namespace BangNokia\Psycho\Drivers;
 
 class PlanPsychoDriver  extends PsychoDriver
 {
