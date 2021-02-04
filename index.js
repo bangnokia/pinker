@@ -4,6 +4,7 @@ const PHPServer = require("php-server-manager");
 const path = require("path");
 
 const server = new PHPServer({
+  php: "/usr/local/bin/php",
   directory: path.resolve(__dirname) + "/laravel/public",
   port: 6969,
 });
@@ -18,6 +19,7 @@ function createWindow() {
     webPreferences: {
       contextIsolation: true,
     },
+    backgroundColor: "#24262f",
     icon: icon,
   });
 
@@ -26,20 +28,26 @@ function createWindow() {
 }
 
 app.whenReady().then(() => {
+  console.log("app ready");
   createWindow();
 });
 
 app.on("window-all-closed", () => {
+  console.log("window all closed");
   if (process.platform !== "darwin") {
-    server.close();
     app.quit();
   }
 });
 
-app.on("active", () => {
+app.on("activate", () => {
+  console.log("active event");
   if (BrowserWindow.getAllWindows().length === 0) {
     createWindow();
   }
+});
+
+app.on("will-quit", () => {
+  server.close();
 });
 
 // try {
