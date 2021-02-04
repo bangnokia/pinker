@@ -7,7 +7,7 @@ use Livewire\Component;
 
 class Tinker extends Component
 {
-    public $showAddProject = true;
+    public $showAddProject = false;
     public $projectPath = '';
 
     protected $listeners = ['changeDirectory', 'toggleAddProject'];

@@ -1,7 +1,7 @@
 <html lang="en">
 
 <head>
-    <title>Tinker badly</title>
+    <title>Pinker</title>
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
     @livewireStyles
 
