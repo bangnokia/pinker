@@ -23,14 +23,12 @@ class Project extends Model
             return $current;
         }
 
-        $project = new Project([
+        return Project::create([
             'name'      => 'Default',
             'path'      => base_path(),
             'code'      => 'echo "hello";',
             'is_active' => true
         ]);
-
-        return $project->tap(fn($project) => $project->save());
     }
 
     public function setAsActive()
