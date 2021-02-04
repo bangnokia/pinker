@@ -23,6 +23,7 @@
         <div class="absolute top-1/2 -mt-48 left-0 w-full h-96 flex justify-center z-10">
             <div class="w-2/3 bg-white p-5">
                 <livewire:select-folder />
+                <livewire:recent-projects />
             </div>
         </div>
     @endif
