@@ -8,7 +8,10 @@ use Symfony\Component\Process\Process;
 
 class Output extends Component
 {
-    public string $output;
+    /**
+     * @var string
+     */
+    public $output;
 
     protected $listeners = ['execute'];
 

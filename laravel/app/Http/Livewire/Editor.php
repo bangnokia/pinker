@@ -7,7 +7,10 @@ use Livewire\Component;
 
 class Editor extends Component
 {
-    public string $code;
+    /**
+     * @var string
+     */
+    public $code;
 
     protected $listeners = ['projectChanged'];
 
