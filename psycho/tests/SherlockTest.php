@@ -9,7 +9,10 @@ use PHPUnit\Framework\TestCase;
 
 class SherlockTest extends TestCase
 {
-    protected Sherlock  $sherlock;
+    /**
+     * @var Sherlock
+     */
+    protected $sherlock;
 
     public function setUp(): void
     {

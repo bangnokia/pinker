@@ -7,7 +7,10 @@ use \PHPUnit\Framework\TestCase;
 
 class ClockwerkTest extends TestCase
 {
-    protected Clockwerk $clockwerk;
+    /**
+     * @var Clockwerk
+     */
+    protected $clockwerk;
 
     public function setUp(): void
     {

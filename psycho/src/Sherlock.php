@@ -8,7 +8,10 @@ use BangNokia\Psycho\Drivers\PsychoDriver;
 
 class Sherlock
 {
-    protected array $drivers = [
+    /**
+     * @var string[]
+     */
+    protected $drivers = [
         LaravelPsychoPsychoDriver::class,
     ];
 

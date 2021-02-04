@@ -12,15 +12,30 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class Clockwerk
 {
-    protected Shell $shell;
+    /**
+     * @var Shell
+     */
+    protected $shell;
 
-    protected OutputInterface $output;
+    /**
+     * @var OutputInterface
+     */
+    protected $output;
 
-    protected Sherlock $sherlock;
+    /**
+     * @var Sherlock
+     */
+    protected $sherlock;
 
-    protected string $targetPath;
+    /**
+     * @var string
+     */
+    protected $targetPath;
 
-    protected array $casters = [];
+    /**
+     * @var array
+     */
+    protected $casters = [];
 
     public function __construct()
     {

@@ -9,7 +9,7 @@
 
 <body class="m-0 p-0">
 <div class="">
-    <livewire:tinker/>
+    <livewire:tinker />
 </div>
 
 <script src="{{ mix('js/app.js') }}"></script>
