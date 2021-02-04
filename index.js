@@ -8,6 +8,8 @@ const server = new PHPServer({
   port: 6969,
 });
 
+server.run();
+
 function createWindow() {
   const icon = nativeImage.createFromPath(__dirname + "/assets/icon.icns");
   const win = new BrowserWindow({
@@ -24,7 +26,6 @@ function createWindow() {
 }
 
 app.whenReady().then(() => {
-  server.run();
   createWindow();
 });
 
