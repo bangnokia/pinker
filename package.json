@@ -17,6 +17,7 @@
     "electron-reloader": "^1.2.0"
   },
   "dependencies": {
+    "fix-path": "^3.0.0",
     "php-server-manager": "^1.3.3"
   }
 }

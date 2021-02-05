@@ -2,9 +2,11 @@ const { app, BrowserWindow, nativeImage } = require("electron");
 const { fork, exec } = require("child_process");
 const PHPServer = require("php-server-manager");
 const path = require("path");
+const fixPath = require("fix-path");
+
+fixPath();
 
 const server = new PHPServer({
-  php: "/usr/local/bin/php",
   directory: path.resolve(__dirname) + "/laravel/public",
   port: 6969,
 });
