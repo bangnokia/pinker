@@ -22,7 +22,7 @@ class Output extends Component
 
         $process = new Process([
             (new PhpExecutableFinder())->find(false),
-            base_path('../psycho/index.php'),
+            base_path('../psycho.phar'),
             "--target={$project->path}",
             "--code={$code}"
         ]);
