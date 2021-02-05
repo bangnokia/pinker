@@ -1,6 +1,6 @@
 <section class="border-r-2 border-gray-500">
     <div wire:ignore>
-        <textarea wire:model="code" id="editor"></textarea>
+        <textarea wire:model="code" id="editor" style="display: none"></textarea>
     </div>
 
     <script type="text/javascript">

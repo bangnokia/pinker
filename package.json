@@ -6,7 +6,7 @@
   "main": "index.js",
   "scripts": {
     "start": "electron .",
-    "build": "electron-packager . --icon=assets/icon.icns --out=builds --overwrite"
+    "build": "php laravel/artisan migrate:fresh --seed && php laravel/artisan config:cache && electron-packager . --icon=assets/icon.icns --out=builds --overwrite"
   },
   "keywords": [],
   "author": "bangnokia",

@@ -1,5 +1,5 @@
 <div>
-    <div class="font-bold">{{ $currentDirectory }}</div>
+    <h3 class="font-bold">{{ $currentDirectory }}</h3>
 
     <div class="h-64 overflow-scroll mt-3 border">
     	@foreach ($this->children as $child)
@@ -18,7 +18,8 @@
         @endforeach
     </div>
 
-    <button class="bg-cyan-500 hover:bg-cyan-600 px-5 py-1 mt-3 text-white"
+    <button class="bg-cyan-500 hover:bg-cyan-600 px-3 py-1 mt-3 text-white"
             wire:click="selectDirectory">@lang('Open')</button>
-    <button class="bg-gray-400 hover:bg-gray-500 px-5 py-1 mt-3 text-white" wire:click="$emitUp('toggleAddProject')">@lang('Cancel')</button>
+    <button class="bg-gray-400 hover:bg-gray-500 px-3 py-1 mt-3 text-white" wire:click="$emitUp('toggleAddProject')">@lang('Cancel')</button>
+    <button class="bg-blue-400 hover:bg-blue-500 px-3 py-1 mt-3 text-white absolute ml-1" wire:click="$emitUp('changeDirectory', '{{ base_path() }}')">@lang('Use default')</button>
 </div>

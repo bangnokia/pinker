@@ -32,7 +32,6 @@ class Tinker extends Component
         $this->emit('projectChanged');
     }
 
-
     public function toggleAddProject()
     {
         $this->showAddProject = !$this->showAddProject;
