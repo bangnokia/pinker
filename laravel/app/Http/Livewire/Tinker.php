@@ -8,13 +8,21 @@ use Livewire\Component;
 class Tinker extends Component
 {
     public $showAddProject = false;
+
+    public $showAddRemoteProject = true;
+
     public $projectPath = '';
+
+    /**
+     * @var Project
+     */
+    public $project;
 
     protected $listeners = ['changeDirectory', 'toggleAddProject'];
 
-    public function getProjectProperty()
+    public function mount()
     {
-        return Project::current();
+        $this->project = Project::current();
     }
 
     public function updatingProjectPath($value)
@@ -28,6 +36,8 @@ class Tinker extends Component
             ->updateOrCreate(['path' => $directory], ['name' => basename($directory)])
             ->setAsActive();
 
+        $this->project = Project::current();
+
         $this->showAddProject = false;
         $this->emit('projectChanged');
     }
@@ -35,6 +45,23 @@ class Tinker extends Component
     public function toggleAddProject()
     {
         $this->showAddProject = !$this->showAddProject;
+        if ($this->showAddProject === true) {
+            $this->showAddRemoteProject = false;
+        }
+    }
+
+    public function toggleAddRemoteProject()
+    {
+        $this->showAddRemoteProject = !$this->showAddRemoteProject;
+        if ($this->showAddRemoteProject === true) {
+            $this->showAddProject = false;
+        }
+    }
+
+    public function closePopup()
+    {
+        $this->showAddProject = false;
+        $this->showAddRemoteProject = false;
     }
 
     public function render()

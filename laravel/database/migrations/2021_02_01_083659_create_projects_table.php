@@ -16,7 +16,16 @@ class CreateProjectsTable extends Migration
         Schema::create('projects', function (Blueprint $table) {
             $table->id();
             $table->string('name')->nullable();
-            $table->string('path')->unique();
+            $table->string('type',  20)->comment('local or remote');
+            $table->string('path');
+            $table->string('host', 50)->nullable();
+            $table->string('port', 5)->nullable();
+            $table->string('user')->nullable();
+            $table->string('auth_type', 20)->comment('password or private_key');
+            $table->string('password')->nullable();
+            $table->string('private_key')->nullable();
+            $table->string('passphrase')->nullable();
+            $table->string('php_binary')->nullable();
             $table->text('code')->nullable();
             $table->boolean('is_active')->default(false);
             $table->timestamps();
