@@ -6,7 +6,8 @@
   "main": "index.js",
   "scripts": {
     "start": "electron .",
-    "build": "php laravel/artisan migrate:fresh --seed && php laravel/artisan config:cache && electron-packager . --icon=assets/icon.icns --out=builds --overwrite"
+    "build-laravel": "cd laravel && php artisan migrate:fresh --seed && php artisan config:cache && npm run production && cd ../",
+    "build": "npm run build-laravel && electron-packager . --icon=assets/icon.icns --ignore=laravel/node_module --out=builds --overwrite"
   },
   "keywords": [],
   "author": "bangnokia",

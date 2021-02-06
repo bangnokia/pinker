@@ -13,6 +13,7 @@
                 tabSize: 4,
                 theme: 'dracula',
                 autofocus: true,
+                keyMap: 'vim',
                 extraKeys: {
                     'Cmd-Enter': function (cm) {
                         Livewire.emit('submit', cm.getValue());
