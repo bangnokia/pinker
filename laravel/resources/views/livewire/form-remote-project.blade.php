@@ -1,4 +1,5 @@
 <div>
+    {{ dump($errors) }}
     <div class="flex items-center mb-2">
         <label for="" class="inline-block w-32 text-gray-500">Name</label>
         <input type="text" wire:model="project.name"
@@ -9,15 +10,15 @@
         <label for="" class="inline-block w-32 text-gray-500">Host</label>
         <div class="flex w-full">
             <input type="text" wire:model="project.host"
-                   class="border border-gray-300 rounded w-full px-2 py-1 focus:outline-none focus:border-cyan-500">
+                   class="border border-gray-300 @error('project.host') border-red-500 @enderror rounded w-full px-2 py-1 focus:outline-none focus:border-cyan-500">
             <input type="text" placeholder="port" wire:model="project.port"
-                   class="ml-2 w-16 border border-gray-300 rounded px-2 py-1 focus:outline-none focus:border-cyan-500">
+                   class="ml-2 w-16 border border-gray-300 @error('project.port') border-red-500 @enderror rounded px-2 py-1 focus:outline-none focus:border-cyan-500">
         </div>
     </div>
     <div class="flex items-center mb-2">
         <label for="" class="inline-block w-32 text-gray-500">User</label>
         <input type="text" wire:model="project.user"
-               class="border border-gray-300 rounded w-full px-2 py-1 focus:outline-none focus:border-cyan-500">
+               class="border border-gray-300 @error('project.user') border-red-500 @enderror rounded w-full px-2 py-1 focus:outline-none focus:border-cyan-500">
     </div>
     <div class="flex items-center mb-2">
         <label for="" class="inline-block w-32 text-gray-500">Auth type</label>
@@ -38,12 +39,12 @@
         <div class="flex items-center mb-2">
             <label for="" class="inline-block w-32 text-gray-500">Private key</label>
             <input type="text" placeholder="~/.ssh/id_rsa" wire:model="project.private_key"
-                   class="border border-gray-300 rounded w-full px-2 py-1 focus:outline-none focus:border-cyan-500">
+                   class="border border-gray-300 @error('project.private_key') border-red-500 @enderror rounded w-full px-2 py-1 focus:outline-none focus:border-cyan-500">
         </div>
         <div class="flex items-center mb-2">
             <label for="" class="inline-block w-32 text-gray-500">Passphrase</label>
             <input type="text" wire:model="project.password"
-                   class="border border-gray-300 rounded w-full px-2 py-1 focus:outline-none focus:border-cyan-500">
+                   class="border border-gray-300 @error('project.passphrase') border-red-500 @enderror rounded w-full px-2 py-1 focus:outline-none focus:border-cyan-500">
         </div>
     @endif
 
@@ -51,19 +52,19 @@
         <div class="flex items-center mb-2">
             <label for="" class="inline-block w-32 text-gray-500">Password</label>
             <input type="text" wire:model="project.password"
-                   class="border border-gray-300 rounded w-full px-2 py-1 focus:outline-none focus:border-cyan-500">
+                   class="border border-gray-300 @error('project.password') border-red-500 @enderror rounded w-full px-2 py-1 focus:outline-none focus:border-cyan-500">
         </div>
     @endif
 
     <div class="flex items-center mb-2">
         <label for="" class="inline-block w-32 text-gray-500">Path</label>
         <input type="text" wire:model="project.path"
-               class="border border-gray-300 rounded w-full px-2 py-1 focus:outline-none focus:border-cyan-500">
+               class="border border-gray-300 @error('project.path') border-red-500 @enderror rounded w-full px-2 py-1 focus:outline-none focus:border-cyan-500">
     </div>
     <div class="flex items-center mb-2">
         <label for="" class="inline-block w-32 text-gray-500">PHP binary</label>
         <input type="text" wire:model="project.php_binary"
-               class="border border-gray-300 rounded w-full px-2 py-1 focus:outline-none focus:border-cyan-500">
+               class="border border-gray-300 @error('project.php_binary') border-red-500 @enderror rounded w-full px-2 py-1 focus:outline-none focus:border-cyan-500">
     </div>
 
     <div class="flex">

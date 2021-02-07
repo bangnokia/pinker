@@ -15,12 +15,12 @@ class FormRemoteProject extends Component
     protected $rules = [
         'project.name'        => 'string|required',
         'project.host'        => 'required|string',
-        'project.port'        => 'required|integer|min:22',
+        'project.port'        => 'required|integer|min:21',
         'project.user'        => 'required|string',
         'project.auth_type'   => 'required|string|in:private_key,password',
-        'project.private_key' => 'required_if:auth_type,private_key',
+        'project.private_key' => 'required_if:project.auth_type,private_key',
         'project.passphrase'  => 'nullable',
-        'project.password'    => 'required_if:auth_type,password',
+        'project.password'    => 'required_if:project.auth_type,password',
         'project.path'        => 'required|string',
         'project.php_binary'  => 'required|string'
     ];
