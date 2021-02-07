@@ -9,7 +9,7 @@ class Tinker extends Component
 {
     public $showAddProject = false;
 
-    public $showAddRemoteProject = true;
+    public $showAddRemoteProject = false;
 
     public $projectPath = '';
 
