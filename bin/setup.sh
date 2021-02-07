@@ -1,7 +1,8 @@
 #!/bin/bash
 
-if [ ! -f index.js ]; then
+if [ ! -d laravel ]; then
 	echo "please run this command from root directory"
+	exit 1
 fi
 
 cd laravel
@@ -13,9 +14,6 @@ php artisan migrate --seed
 php artisan config:cache
 npm install
 npm run dev
-
-cd ../psycho
-composer install
 
 cd ..
 npm install
