@@ -1,5 +1,4 @@
 <div>
-    {{ dump($errors) }}
     <div class="flex items-center mb-2">
         <label for="" class="inline-block w-32 text-gray-500">Name</label>
         <input type="text" wire:model="project.name"
