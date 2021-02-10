@@ -32,6 +32,8 @@ class Tinker extends Component
     {
         $this->project = Project::find($projectId);
 
+        $this->project->setAsActive();
+
         $this->showAddProject = false;
         $this->showAddRemoteProject = false;
 

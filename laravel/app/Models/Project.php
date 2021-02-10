@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Traits\Tappable;
 
@@ -14,6 +15,16 @@ class Project extends Model
     protected $casts = [
         'is_active' => 'boolean',
     ];
+
+    public function scopeLocal(Builder $query)
+    {
+        return $query->where('type', 'local');
+    }
+
+    public function scopeSsh(Builder $query)
+    {
+        return $query->where('type', 'ssh');
+    }
 
     public static function current()
     {

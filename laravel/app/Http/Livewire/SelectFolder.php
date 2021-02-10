@@ -31,8 +31,6 @@ class SelectFolder extends Component
             'type' => 'local',
         ]);
 
-        $project->setAsActive();
-
         $this->emit('changeProject', $project->id);
     }
 

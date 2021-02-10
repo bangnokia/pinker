@@ -11,7 +11,7 @@ class RecentProjects extends Component
 
     public function mount()
     {
-        $this->projects = Project::query()->latest('updated_at')->limit(7)->get();
+        $this->projects = Project::query()->local()->latest('updated_at')->limit(7)->get();
     }
 
     public function render()
