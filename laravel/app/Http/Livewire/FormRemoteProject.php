@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Executor;
 use App\Models\Project;
 use Livewire\Component;
 
@@ -13,6 +14,7 @@ class FormRemoteProject extends Component
     public $project;
 
     protected $rules = [
+        'project.type'        => 'string', // ssh
         'project.name'        => 'string|required',
         'project.host'        => 'required|string',
         'project.port'        => 'required|integer|min:21',
@@ -28,16 +30,39 @@ class FormRemoteProject extends Component
     public function mount()
     {
         $this->project = $this->project ?: new Project([
-            'type'      => 'ssh',
-            'port'      => 22,
-            'auth_type' => 'private_key',
+            'type'        => 'ssh',
+            'port'        => 22,
+            'auth_type'   => 'private_key',
+            'private_key' => '~/.ssh/id_rsa',
+            'php_binary'  => 'php',
         ]);
     }
 
     public function connect()
     {
         $this->validate();
-        dd($this->project);
+
+        $this->project->save();
+
+        $this->uploadPsycho();
+
+        $this->project->setAsActive();
+
+        $this->emit('changeProject', $this->project->id);
+    }
+
+    protected function uploadPsycho()
+    {
+        Executor::makeSsh($this->project)->upload(base_path('/../psycho.phar'), '/tmp/');
+    }
+
+    public function testConnection()
+    {
+        $this->validate();
+
+        $process = Executor::makeSsh($this->project)->execute('ls -la');
+
+        session()->flash('test_connection', $process->isSuccessful());
     }
 
     public function render()

@@ -2,31 +2,39 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Project;
 use Livewire\Component;
 
 class SelectFolder extends Component
 {
-	public $currentDirectory = '';
+    public $currentDirectory = '';
 
-	public function mount()
-	{
-		$this->currentDirectory = getenv('HOME');
-	}
+    public function mount()
+    {
+        $this->currentDirectory = getenv('HOME');
+    }
 
-	public function getChildrenProperty()
-	{
-		return scandir($this->currentDirectory, SCANDIR_SORT_DESCENDING);
-	}
+    public function getChildrenProperty()
+    {
+        return scandir($this->currentDirectory, SCANDIR_SORT_DESCENDING);
+    }
 
-	public function changeDirectory($directory)
-	{
-		$this->currentDirectory = realpath($directory);
-	}
+    public function changeDirectory($directory)
+    {
+        $this->currentDirectory = realpath($directory);
+    }
 
     public function selectDirectory()
     {
-        $this->emit('changeDirectory', $this->currentDirectory);
-	}
+        $project = Project::create([
+            'path' => $this->currentDirectory,
+            'type' => 'local',
+        ]);
+
+        $project->setAsActive();
+
+        $this->emit('changeProject', $project->id);
+    }
 
     public function render()
     {

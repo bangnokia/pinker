@@ -25,8 +25,8 @@
     </div>
 
     @if ($showAddProject || $showAddRemoteProject)
-        <div class="absolute top-1/2 -mt-64 left-0 w-full h-auto flex justify-center z-10 bg-cyan-500">
-            <div class="w-2/3 bg-white p-5 space-x-5  transition transition-all">
+        <div class="absolute top-1/2 -mt-64 left-0 w-full h-auto flex justify-center z-10">
+            <div class="w-2/3 bg-white p-5 space-x-5 transition transition-all">
 
                 @if ($showAddProject)
                     <div class="flex space-x-5 relative ">

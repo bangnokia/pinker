@@ -9,16 +9,14 @@ class Tinker extends Component
 {
     public $showAddProject = false;
 
-    public $showAddRemoteProject = true;
-
-    public $projectPath = '';
+    public $showAddRemoteProject = false;
 
     /**
      * @var Project
      */
     public $project;
 
-    protected $listeners = ['changeDirectory', 'toggleAddProject'];
+    protected $listeners = ['changeProject', 'toggleAddProject'];
 
     public function mount()
     {
@@ -30,15 +28,13 @@ class Tinker extends Component
         $this->projectName = basename($value);
     }
 
-    public function changeDirectory($directory)
+    public function changeProject($projectId)
     {
-        Project::query()
-            ->updateOrCreate(['path' => $directory], ['name' => basename($directory)])
-            ->setAsActive();
-
-        $this->project = Project::current();
+        $this->project = Project::find($projectId);
 
         $this->showAddProject = false;
+        $this->showAddRemoteProject = false;
+
         $this->emit('projectChanged');
     }
 

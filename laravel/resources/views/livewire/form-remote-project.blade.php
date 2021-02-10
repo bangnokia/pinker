@@ -30,6 +30,7 @@
             </label>
             <label for="auth-password" class="flex content-center space-x-3 items-center">
                 <input type="radio" wire:model="project.auth_type" name="auth_type" value="password" class="mr-2"
+                       disabled
                        id="auth-password"> Password
             </label>
         </div>
@@ -69,8 +70,27 @@
     <div class="flex">
         <div class="w-32"></div>
         <div class="w-full">
-            <button class="text-white px-3 py-1 bg-cyan-400 hover:bg-cyan-500" wire:click="connect">Connect</button>
-            <button class="">Test connection</button>
+            <button class="text-white px-3 py-1 bg-cyan-400 hover:bg-cyan-500" wire:click="connect">
+                Connect
+                <span wire:loading wire:target="connect">...</span>
+            </button>
+            <button class="" wire:click="testConnection">Test connection</button>
+        </div>
+    </div>
+    <div class="flex">
+        <div class="w-32"></div>
+        <div class="w-full">
+            <span wire:loading wire:target="testConnection">...</span>
+            <div wire:loading.remove wire:target="testConnection">
+                @if (session()->has('test_connection'))
+                    @if (session('test_connection'))
+                        <span class="text-green-500">Connection successfully!</span>
+                    @endif
+                    @if (session('test_connection') === false)
+                        <span class="text-red-500">Connection failure!</span>
+                    @endif
+                @endif
+            </div>
         </div>
     </div>
 </div>
