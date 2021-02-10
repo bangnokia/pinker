@@ -11,6 +11,7 @@
                 indentWithTabs: true,
                 lineWrapping: true,
                 tabSize: 4,
+                indentUnit: 4,
                 theme: 'dracula',
                 autofocus: true,
                 keyMap: 'vim',
@@ -25,7 +26,6 @@
             };
             const codeMirror = CodeMirror.fromTextArea(document.getElementById('editor'), config);
             @this.on('projectChanged', function () {
-                console.log('project changed', @this.code);
                 codeMirror.getDoc().setValue(@this.code);
             })
         });
