@@ -18,7 +18,7 @@
         @endforeach
     </div>
 
-    <button class="bg-cyan-500 hover:bg-cyan-600 px-3 py-1 mt-3 text-white"
+    <button class="btn bg-cyan-500 hover:bg-cyan-600 mt-3 text-white"
             wire:click="selectDirectory">@lang('Open')</button>
-    <button class="bg-blue-400 hover:bg-blue-500 px-3 py-1 mt-3 text-white absolute ml-1" wire:click="$emitUp('changeProject', '1')">@lang('Use default')</button>
+    <button class="btn underline font-light text-gray-500 hover:text-gray-800 mt-3 absolute ml-1" wire:click="$emitUp('changeProject', '1')">@lang('Use default')</button>
 </div>

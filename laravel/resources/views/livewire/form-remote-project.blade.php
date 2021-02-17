@@ -1,4 +1,5 @@
 <div>
+    <h3 class="font-medium mb-5">Connection details</h4>
     <div class="flex items-center mb-2">
         <label for="" class="inline-block w-32 text-gray-500">Name</label>
         <input type="text" wire:model="project.name"
@@ -70,11 +71,11 @@
     <div class="flex">
         <div class="w-32"></div>
         <div class="w-full">
-            <button class="text-white px-3 py-1 bg-cyan-400 hover:bg-cyan-500" wire:click="connect">
+            <button class="btn text-white px-3 py-1 bg-cyan-400 hover:bg-cyan-500" wire:click="connect">
                 Connect
                 <span wire:loading wire:target="connect">...</span>
             </button>
-            <button class="" wire:click="testConnection">Test connection</button>
+            <button class="btn" wire:click="testConnection">Test connection</button>
         </div>
     </div>
     <div class="flex">
