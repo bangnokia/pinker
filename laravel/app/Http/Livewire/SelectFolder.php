@@ -27,6 +27,7 @@ class SelectFolder extends Component
     public function selectDirectory()
     {
         $project = Project::create([
+            'name' => basename($this->currentDirectory),
             'path' => $this->currentDirectory,
             'type' => 'local',
         ]);

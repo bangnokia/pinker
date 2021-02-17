@@ -16,7 +16,7 @@ class Editor extends Component
 
     public function projectChanged()
     {
-        $this->code = $this->project->content ?? '';
+        $this->code = $this->project->code;
     }
 
     public function getProjectProperty()

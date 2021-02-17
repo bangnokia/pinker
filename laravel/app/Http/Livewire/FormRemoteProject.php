@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use App\Executor;
 use App\Models\Project;
 use Livewire\Component;
+use Symfony\Component\Process\Exception\ProcessTimedOutException;
 
 class FormRemoteProject extends Component
 {
@@ -27,6 +28,8 @@ class FormRemoteProject extends Component
         'project.php_binary'  => 'required|string'
     ];
 
+    protected $listeners = ['takeProject'];
+
     public function mount()
     {
         $this->project = $this->project ?: new Project([
@@ -38,13 +41,23 @@ class FormRemoteProject extends Component
         ]);
     }
 
+    public function takeProject($projectId)
+    {
+        $this->project = Project::find($projectId);
+    }
+
     public function connect()
     {
         $this->validate();
 
         $this->project->save();
 
-        $this->uploadPsycho();
+        try {
+            $this->uploadPsycho();
+        } catch(ProcessTimedOutException $exception) {
+            session()->flash('connection_state', false);
+            return false;
+        }
 
         $this->project->setAsActive();
 
@@ -60,9 +73,15 @@ class FormRemoteProject extends Component
     {
         $this->validate();
 
-        $process = Executor::makeSsh($this->project)->execute('ls -la');
+        try {
+            $process = Executor::makeSsh($this->project)->execute('ls -la');
 
-        session()->flash('test_connection', $process->isSuccessful());
+            $success = $process->isSuccessful();
+        } catch(ProcessTimedOutException $exception) {
+            $success = false;
+        }
+
+        session()->flash('connection_state', $success);
     }
 
     public function render()

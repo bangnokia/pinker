@@ -25,7 +25,8 @@
                 }
             };
             const codeMirror = CodeMirror.fromTextArea(document.getElementById('editor'), config);
-            @this.on('projectChanged', function () {
+
+            Livewire.on('projectChanged', function () {
                 codeMirror.getDoc().setValue(@this.code);
             })
         });

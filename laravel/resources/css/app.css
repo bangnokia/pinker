@@ -5,6 +5,10 @@
 @import "~codemirror/lib/codemirror.css";
 @import "~codemirror/theme/dracula.css";
 
+.CodeMirror pre.CodeMirror-line, .CodeMirror pre.CodeMirror-line-like {
+    padding: 0 15px;
+}
+
 body, html {
     font-size: 1rem;
 }
@@ -12,5 +16,5 @@ body, html {
     height: 100%;
 }
 .btn {
-	@apply rounded-md px-3 py-2 text-sm;
+	@apply rounded-md px-3 py-2 text-sm transition duration-200;
 }

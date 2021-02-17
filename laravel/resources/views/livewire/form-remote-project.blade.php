@@ -73,7 +73,7 @@
         <div class="w-full">
             <button class="btn text-white px-3 py-1 bg-cyan-400 hover:bg-cyan-500" wire:click="connect">
                 Connect
-                <span wire:loading wire:target="connect">...</span>
+                <!-- <span wire:loading wire:target="connect">...</span> -->
             </button>
             <button class="btn" wire:click="testConnection">Test connection</button>
         </div>
@@ -81,13 +81,13 @@
     <div class="flex">
         <div class="w-32"></div>
         <div class="w-full">
-            <span wire:loading wire:target="testConnection">...</span>
-            <div wire:loading.remove wire:target="testConnection">
-                @if (session()->has('test_connection'))
-                    @if (session('test_connection'))
+            <span wire:loading wire:target="testConnection, connect">...</span>
+            <div wire:loading.remove wire:target="testConnection, connect">
+                @if (session()->has('connection_state'))
+                    @if (session('connection_state'))
                         <span class="text-green-500">Connection successfully!</span>
                     @endif
-                    @if (session('test_connection') === false)
+                    @if (session('connection_state') === false)
                         <span class="text-red-500">Connection failure!</span>
                     @endif
                 @endif
