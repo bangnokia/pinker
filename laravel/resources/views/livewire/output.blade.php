@@ -1,6 +1,6 @@
 <div>
     <div wire:ignore>
-        <textarea class="p-10 pr-0" id="output" wire:model="output"></textarea>
+        <textarea class="p-10 pr-0" id="output" wire:model="output" style="display: none"></textarea>
     </div>
 
     <script>

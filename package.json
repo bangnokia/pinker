@@ -7,7 +7,8 @@
   "scripts": {
     "start": "electron .",
     "build-laravel": "cd laravel && php artisan migrate:fresh --seed && php artisan config:clear && npm run production && cd ../",
-    "build": "npm run build-laravel && electron-packager . --icon=assets/icon.icns --ignore=laravel/node_module --platform=darwin --arch=x64 --out=builds --overwrite"
+    "build": "npm run build-laravel && npm run build-mac",
+    "build-mac": "electron-packager . --icon=assets/icon.icns --ignore=laravel/node_module --platform=darwin --arch=x64 --out=builds --overwrite"
   },
   "keywords": [],
   "author": "bangnokia",
