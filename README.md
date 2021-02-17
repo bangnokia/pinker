@@ -4,6 +4,8 @@ Tinker with your laravel (php) application, a low quality version of Tinkerwell 
 
 _Only running on MacOS (currently)._
 
+![](assets/screenshot.png)
+
 ## Requirements
 
 - php ^7.3
