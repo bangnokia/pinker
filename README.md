@@ -31,3 +31,7 @@ More information of framework supporteds, pls check on `psycho` package.
 ### Packaging
 
 - run `npm run build`
+
+## License
+
+MIT
