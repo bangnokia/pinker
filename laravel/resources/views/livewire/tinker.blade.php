@@ -48,14 +48,3 @@
     @endif
 
 </div>
-
-<!-- <script type="text/javascript">
-    document.addEventListener('livewire:load', function () {
-        hotkeys('command+o', function (e) {
-            e.preventDefault();
-            @this.toggleAddProject();
-            return false;
-        });
-    })
-</script>
- -->

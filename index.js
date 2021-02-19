@@ -30,19 +30,16 @@ function createWindow() {
 }
 
 app.whenReady().then(() => {
-  console.log("app ready");
   createWindow();
 });
 
 app.on("window-all-closed", () => {
-  console.log("window all closed");
   if (process.platform !== "darwin") {
     app.quit();
   }
 });
 
 app.on("activate", () => {
-  console.log("active event");
   if (BrowserWindow.getAllWindows().length === 0) {
     createWindow();
   }
@@ -51,7 +48,3 @@ app.on("activate", () => {
 app.on("will-quit", () => {
   server.close();
 });
-
-// try {
-//   require("electron-reloader")(module);
-// } catch {}
