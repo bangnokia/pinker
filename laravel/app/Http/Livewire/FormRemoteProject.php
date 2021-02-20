@@ -66,7 +66,7 @@ class FormRemoteProject extends Component
 
     protected function uploadPsycho()
     {
-        Executor::makeSsh($this->project)->upload(base_path('/../psycho.phar'), '/tmp/');
+        Executor::makeSsh($this->project)->upload(base_path('/psycho.phar'), '/tmp/');
     }
 
     public function testConnection()

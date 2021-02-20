@@ -24,7 +24,7 @@ class Output extends Component
         if ($project->type === 'local') {
             $process = new Process([
                 (new PhpExecutableFinder())->find(false),
-                base_path('../psycho.phar'),
+                base_path('/psycho.phar'),
                 "--target={$project->path}",
                 "--code={$code}"
             ]);
