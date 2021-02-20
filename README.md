@@ -10,6 +10,11 @@ _Only running on MacOS (currently)._
 
 - php ^7.3
 
+## Installation
+
+- Download build file
+- Right click and select `Open` (This app is not signed yet).
+
 ## How it works?
 
 Pinker is just an laravel application embed in electron. To interactive with other php application, it's using [psycho](https://github.com/bangnokia/psycho) which is an wrapper of [psysh](https://github.com/bobthecow/psysh).
