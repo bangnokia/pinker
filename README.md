@@ -13,7 +13,7 @@ _Only running on MacOS (currently)._
 ## Installation
 
 - Download build file
-- Right click and select `Open` (This app is not signed yet).
+- Right click and select `Open` (This app is not signed).
 
 ## How it works?
 
