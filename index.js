@@ -3,15 +3,26 @@ const { fork, exec } = require("child_process");
 const PHPServer = require("php-server-manager");
 const path = require("path");
 const fixPath = require("fix-path");
+const { existsSync } = require("fs");
+const fse = require("fs-extra");
+const homeDir = require("os").homedir();
 
 fixPath();
 
+const laravelPath = homeDir + "/.pinker/laravel";
+
+if (!existsSync(laravelPath)) {
+  fse.ensureDirSync(laravelPath);
+  fse.copySync(
+    path.resolve(__dirname) + "/laravel",
+    homeDir + "/.pinker/laravel"
+  );
+}
+
 const server = new PHPServer({
-  directory: path.resolve(__dirname) + "/laravel/public",
+  directory: laravelPath + "/public",
   port: 6969,
 });
-
-server.run();
 
 function createWindow() {
   const icon = nativeImage.createFromPath(__dirname + "/assets/icon.icns");
@@ -30,6 +41,7 @@ function createWindow() {
 }
 
 app.whenReady().then(() => {
+  server.run();
   createWindow();
 });
 
