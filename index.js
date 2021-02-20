@@ -3,20 +3,23 @@ const { fork, exec } = require("child_process");
 const PHPServer = require("php-server-manager");
 const path = require("path");
 const fixPath = require("fix-path");
-const { existsSync } = require("fs");
+const { existsSync, realpath } = require("fs");
 const fse = require("fs-extra");
 const homeDir = require("os").homedir();
 
 fixPath();
+let laravelPath = path.resolve(__dirname) + "/laravel";
 
-const laravelPath = homeDir + "/.pinker/laravel";
+if (process.env === "production") {
+  laravelPath = homeDir + "/.pinker/laravel";
 
-if (!existsSync(laravelPath)) {
-  fse.ensureDirSync(laravelPath);
-  fse.copySync(
-    path.resolve(__dirname) + "/laravel",
-    homeDir + "/.pinker/laravel"
-  );
+  if (!existsSync(laravelPath)) {
+    fse.ensureDirSync(laravelPath);
+    fse.copySync(
+      path.resolve(__dirname) + "/laravel",
+      homeDir + "/.pinker/laravel"
+    );
+  }
 }
 
 const server = new PHPServer({
