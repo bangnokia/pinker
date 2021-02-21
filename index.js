@@ -8,9 +8,10 @@ const fse = require("fs-extra");
 const homeDir = require("os").homedir();
 
 fixPath();
+
 let laravelPath = path.resolve(__dirname) + "/laravel";
 
-if (process.env === "production") {
+if (app.isPackaged) {
   laravelPath = homeDir + "/.pinker/laravel";
 
   if (!existsSync(laravelPath)) {
