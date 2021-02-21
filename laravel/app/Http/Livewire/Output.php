@@ -24,17 +24,21 @@ class Output extends Component
         if ($project->type === 'local') {
             $process = new Process([
                 (new PhpExecutableFinder())->find(false),
-                base_path('/psycho.phar'),
+                base_path('psycho.phar'),
                 "--target={$project->path}",
-                "--code={$code}"
+                "--code=".base64_encode($code)
             ]);
-            $process->run();
+
+            
+            $process->run(null, [
+                'TEMP' => sys_get_temp_dir() // fuck windows
+            ]);
         } else {
             $command = (new Process([
                 $project->php_binary,
                 "/tmp/psycho.phar",
                 "--target={$project->path}",
-                "--code={$code}"
+                "--code=".base64_encode($code)
             ]))->getCommandLine();
 
             $process = Executor::makeSsh($project)->execute([
@@ -42,8 +46,10 @@ class Output extends Component
                 $command
             ]);
         }
+        
 
-        $this->output = $process->getOutput();
+        $this->output = $process->isSuccessful() ? $process->getOutput() : $process->getErrorOutput();
+
 
         $this->emit('outputUpdated');
     }

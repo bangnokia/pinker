@@ -8,7 +8,8 @@
     "start": "electron .",
     "build-laravel": "cd laravel && php artisan migrate:fresh --seed && php artisan cache:clear && php artisan config:clear && php artisan key:generate && npm run production && cd ../",
     "build": "npm run build-laravel && npm run build-mac",
-    "build-mac": "electron-packager . --icon=assets/icon.icns --ignore=laravel/node_module --platform=darwin --arch=x64 --out=builds --overwrite"
+    "build-mac": "electron-packager . --icon=assets/icon.icns --ignore=laravel/node_module --platform=darwin --arch=x64 --out=builds --overwrite",
+    "build-win": "electron-packager . --icon=assets/icon.icns --ignore=laravel/node_module --platform=win32 --arch=x64 --out=builds --overwrite"
   },
   "keywords": [],
   "author": "bangnokia",

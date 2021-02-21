@@ -19,8 +19,8 @@
                     'Cmd-Enter': function (cm) {
                         Livewire.emit('submit', cm.getValue());
                     },
-                    'Ctrl-Enter': function () {
-                        Livewire.emit('submit');
+                    'Ctrl-Enter': function (cm) {
+                        Livewire.emit('submit', cm.getValue());
                     }
                 }
             };
