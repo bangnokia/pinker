@@ -11,7 +11,7 @@ class SelectFolder extends Component
 
     public function mount()
     {
-        $this->currentDirectory = getenv('HOME');
+        $this->currentDirectory = $this->guessUserHomeDirectory();;
     }
 
     public function getChildrenProperty()
@@ -20,7 +20,7 @@ class SelectFolder extends Component
     }
 
     public function changeDirectory($directory)
-    {
+    {       
         $this->currentDirectory = realpath($directory);
     }
 
@@ -33,6 +33,19 @@ class SelectFolder extends Component
         ]);
 
         $this->emit('changeProject', $project->id);
+    }
+
+    protected function guessUserHomeDirectory()
+    {
+        $home = getenv('HOME');
+
+        
+        if (!$home) {
+            $home = "C:";
+        }
+
+        return $home;
+
     }
 
     public function render()
