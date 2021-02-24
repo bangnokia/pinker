@@ -3,29 +3,35 @@ const { fork, exec } = require("child_process");
 const PHPServer = require("php-server-manager");
 const path = require("path");
 const fixPath = require("fix-path");
-const { existsSync, realpath } = require("fs");
 const fse = require("fs-extra");
 const homeDir = require("os").homedir();
 
 fixPath();
 
-const basePath =  path.resolve(__dirname);
+const basePath = path.resolve(__dirname);
 const laravelSourcePath = basePath + "/laravel";
 const laravelProdutionPath = homeDir + "/.pinker/laravel";
+
 let laravelPath = laravelSourcePath;
 
-if (!fse.pathExists(homeDir + '/.pinker/database.sqlite')) {
-  fse.copySync(basePath + '/database.sqlite', homeDir + '/.pinker/');
+// ensure database.sqlite exists
+if (!fse.pathExistsSync(homeDir + "/.pinker/database.sqlite")) {
+  fse.copySync(
+    basePath + "/database.sqlite",
+    homeDir + "/.pinker/database.sqlite"
+  );
 }
 
 if (app.isPackaged) {
-  if (!fse.pathExists(laravelProdutionPath)) {
+  // moving laravel directory to ~/.pinker/laravel
+  if (!fse.pathExistsSync(laravelProdutionPath)) {
     fse.ensureDirSync(laravelPath);
     fse.copySync(laravelSourcePath, laravelProdutionPath);
   }
   laravelPath = laravelProdutionPath;
 }
 
+// start php server
 const server = new PHPServer({
   directory: laravelPath + "/public",
   port: 6969,
