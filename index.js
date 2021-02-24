@@ -9,18 +9,21 @@ const homeDir = require("os").homedir();
 
 fixPath();
 
-let laravelPath = path.resolve(__dirname) + "/laravel";
+const basePath =  path.resolve(__dirname);
+const laravelSourcePath = basePath + "/laravel";
+const laravelProdutionPath = homeDir + "/.pinker/laravel";
+let laravelPath = laravelSourcePath;
+
+if (!fse.pathExists(homeDir + '/.pinker/database.sqlite')) {
+  fse.copySync(basePath + '/database.sqlite', homeDir + '/.pinker/');
+}
 
 if (app.isPackaged) {
-  laravelPath = homeDir + "/.pinker/laravel";
-
-  if (!existsSync(laravelPath)) {
+  if (!fse.pathExists(laravelProdutionPath)) {
     fse.ensureDirSync(laravelPath);
-    fse.copySync(
-      path.resolve(__dirname) + "/laravel",
-      homeDir + "/.pinker/laravel"
-    );
+    fse.copySync(laravelSourcePath, laravelProdutionPath);
   }
+  laravelPath = laravelProdutionPath;
 }
 
 const server = new PHPServer({
