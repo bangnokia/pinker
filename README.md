@@ -8,7 +8,7 @@ _Only running on MacOS (currently)._
 
 ## Requirements
 
-- php ^7.3
+- php ^7.4
 
 ## Installation
 
