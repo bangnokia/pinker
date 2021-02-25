@@ -3,7 +3,6 @@
 namespace App;
 
 use App\Models\Project;
-use Spatie\Ssh\Ssh;
 
 class Executor
 {
@@ -13,7 +12,6 @@ class Executor
             ->usePrivateKey($project->private_key)
             ->configureProcess(function ($process) {
                 $process->setTimeout(20);
-            })
-            ;
+            });
     }
 }
