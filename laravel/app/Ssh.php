@@ -12,21 +12,45 @@ use Symfony\Component\Process\Process;
  */
 class Ssh
 {
-    protected string $user;
+    /**
+     * @var string
+     */
+    protected $user;
 
-    protected string $host;
+    /**
+     * @var string
+     */
+    protected $host;
 
-    protected string $pathToPrivateKey = '';
+    /**
+     * @var string
+     */
+    protected $pathToPrivateKey = '';
 
-    protected ?int $port;
+    /**
+     * @var int|null
+     */
+    protected $port;
 
-    protected bool $enableStrictHostChecking = true;
+    /**
+     * @var bool
+     */
+    protected $enableStrictHostChecking = true;
 
-    protected bool $quietMode = false;
+    /**
+     * @var bool
+     */
+    protected $quietMode = false;
 
-    protected Closure $processConfigurationClosure;
+    /**
+     * @var \Closure
+     */
+    protected $processConfigurationClosure;
 
-    protected Closure $onOutput;
+    /**
+     * @var \Closure
+     */
+    protected $onOutput;
 
     public function __construct(string $user, string $host, int $port = null)
     {
@@ -36,24 +60,37 @@ class Ssh
 
         $this->port = $port;
 
-        $this->processConfigurationClosure = fn (Process $process) => null;
+        $this->processConfigurationClosure = function (Process $process) {
+            return null;
+        };
 
-        $this->onOutput = fn ($type, $line) => null;
+        $this->onOutput = function ($type, $line) {
+            return null;
+        };
     }
 
-    public static function create(...$args): self
+    /**
+     * @return $this
+     */
+    public static function create(...$args)
     {
         return new static(...$args);
     }
 
-    public function usePrivateKey(string $pathToPrivateKey): self
+    /**
+     * @return $this
+     */
+    public function usePrivateKey(string $pathToPrivateKey)
     {
         $this->pathToPrivateKey = $pathToPrivateKey;
 
         return $this;
     }
 
-    public function usePort(int $port): self
+    /**
+     * @return $this
+     */
+    public function usePort(int $port)
     {
         if ($port < 0) {
             throw new Exception('Port must be a positive integer.');
@@ -63,42 +100,60 @@ class Ssh
         return $this;
     }
 
-    public function configureProcess(Closure $processConfigurationClosure): self
+    /**
+     * @return $this
+     */
+    public function configureProcess(Closure $processConfigurationClosure)
     {
         $this->processConfigurationClosure = $processConfigurationClosure;
 
         return $this;
     }
 
-    public function onOutput(Closure $onOutput): self
+    /**
+     * @return $this
+     */
+    public function onOutput(Closure $onOutput)
     {
         $this->onOutput = $onOutput;
 
         return $this;
     }
 
-    public function enableStrictHostKeyChecking(): self
+    /**
+     * @return $this
+     */
+    public function enableStrictHostKeyChecking()
     {
         $this->enableStrictHostChecking = true;
 
         return $this;
     }
 
-    public function disableStrictHostKeyChecking(): self
+    /**
+     * @return $this
+     */
+    public function disableStrictHostKeyChecking()
     {
         $this->enableStrictHostChecking = false;
 
         return $this;
     }
 
-    public function enableQuietMode(): self
+    /**
+     * @return $this
+     */
+    public function enableQuietMode()
     {
         $this->quietMode = true;
 
         return $this;
     }
 
-    public function disableQuietMode(): self
+    /**
+     * @return $this
+     */
+    public function disableQuietMode()
     {
         $this->quietMode = false;
 
