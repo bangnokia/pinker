@@ -2,7 +2,7 @@
 
 Tinker with your laravel (php) application, a low quality version of Tinkerwell app xD. It's can running on local or remote project (via SSH).
 
-_ MacOS (currently)._
+- MacOS (currently).
 - Windows (not stable because i don't use Windows)
 
 ![](assets/screenshot.png)
