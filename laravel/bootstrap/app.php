@@ -41,6 +41,8 @@ $app->singleton(
     App\Exceptions\Handler::class
 );
 
+$app->useStoragePath(user_home_dir().DIRECTORY_SEPARATOR.'.pinker'.DIRECTORY_SEPARATOR.'storage');
+
 /*
 |--------------------------------------------------------------------------
 | Return The Application
