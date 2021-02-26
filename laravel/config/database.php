@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Str;
 
+$devDatabasePath = base_path('/../database.sqlite');
+
 return [
 
     /*
@@ -38,7 +40,7 @@ return [
         'sqlite' => [
             'driver' => 'sqlite',
             'url' => env('DATABASE_URL'),
-            'database' => base_path('/../database.sqlite'),
+            'database' => file_exists($devDatabasePath) ? $devDatabasePath : user_home_dir() . DIRECTORY_SEPARATOR . '.pinker' . DIRECTORY_SEPARATOR . 'database.sqlite',
             'prefix' => '',
             'foreign_key_constraints' => env('DB_FOREIGN_KEYS', true),
         ],

@@ -6,30 +6,32 @@ const fixPath = require("fix-path");
 const fse = require("fs-extra");
 const homeDir = require("os").homedir();
 
-fixPath();
-
 const basePath = path.resolve(__dirname);
-const laravelSourcePath = basePath + "/laravel";
-const laravelProdutionPath = homeDir + "/.pinker/laravel";
+const laravelPath = basePath + "/laravel";
+const pinkerUserPath = homeDir + "/.pinker";
 
-let laravelPath = laravelSourcePath;
-
-// ensure database.sqlite exists
-if (!fse.pathExistsSync(homeDir + "/.pinker/database.sqlite")) {
-  fse.copySync(
-    basePath + "/database.sqlite",
-    homeDir + "/.pinker/database.sqlite"
-  );
-}
-
-if (app.isPackaged) {
-  // moving laravel directory to ~/.pinker/laravel
-  if (!fse.pathExistsSync(laravelProdutionPath)) {
-    fse.ensureDirSync(laravelPath);
-    fse.copySync(laravelSourcePath, laravelProdutionPath);
+function ensureStoragePathExists() {
+  if (!fse.pathExistsSync(homeDir + "/.pinker/database.sqlite")) {
+    fse.copySync(
+      basePath + "/database.sqlite.example",
+      homeDir + "/.pinker/database.sqlite"
+    );
   }
-  laravelPath = laravelProdutionPath;
 }
+
+function ensureDatabaseFileExists() {
+  fse.ensureDirSync(pinkerUserPath + "/storage/app");
+  fse.ensureDirSync(pinkerUserPath + "/storage/cache");
+  fse.ensureDirSync(pinkerUserPath + "/storage/framework/cache");
+  fse.ensureDirSync(pinkerUserPath + "/storage/framework/sessions");
+  fse.ensureDirSync(pinkerUserPath + "/storage/framework/views");
+  fse.ensureDirSync(pinkerUserPath + "/storage/framework/testing");
+  fse.ensureDirSync(pinkerUserPath + "/storage/logs");
+}
+
+fixPath();
+ensureDatabaseFileExists();
+ensureStoragePathExists();
 
 // start php server
 const server = new PHPServer({

@@ -9,7 +9,7 @@ cd laravel
 composer install
 cp .env.example .env
 php artisan key:generate
-touch $HOME/.pinker/database.sqlite
+touch database.sqlite
 php artisan migrate --seed
 php artisan config:cache
 npm install
