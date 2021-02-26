@@ -17,7 +17,7 @@ class EnsureConfigIsCached
      */
     public function handle(Request $request, Closure $next)
     {
-        if (!file_exists(base_path('/bootstrap/cache/config.php'))) {
+        if (!app()->configurationIsCached()) {
             Artisan::call('config:cache');
         }
 
