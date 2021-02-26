@@ -19,7 +19,6 @@ Tinker with your laravel (php) application, a low quality version of Tinkerwell 
 ## How it works?
 
 Pinker is just an laravel application embed in electron. To interactive with other php application, it's using [psycho](https://github.com/bangnokia/psycho) which is an wrapper of [psysh](https://github.com/bobthecow/psysh).
-This is just my prototype to see it can works or not. I consider the next version will using an JS framework.
 
 ## Supported
 
