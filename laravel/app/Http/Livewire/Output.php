@@ -41,10 +41,7 @@ class Output extends Component
                 "--code=".base64_encode($code)
             ]))->getCommandLine();
 
-            $process = Executor::makeSsh($project)->execute([
-                'cd '.$project->path,
-                $command
-            ]);
+            $process = Executor::makeSsh($project)->execute($command);
         }
         
 

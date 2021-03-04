@@ -10,7 +10,7 @@ const basePath = path.resolve(__dirname);
 const laravelPath = basePath + "/laravel";
 const pinkerUserPath = homeDir + "/.pinker";
 
-function ensureStoragePathExists() {
+function ensureDatabaseFileExists() {
   if (!fse.pathExistsSync(homeDir + "/.pinker/database.sqlite")) {
     fse.copySync(
       basePath + "/database.sqlite.example",
@@ -19,7 +19,16 @@ function ensureStoragePathExists() {
   }
 }
 
-function ensureDatabaseFileExists() {
+// we need fresh the config:cache laravel every application start
+// to avoid conflicts with other laravel apps
+function ensureConfigFileIsDeleted(params) {
+  const configCachedPath = homeDir + "/.pinker/storage/cache/config.php";
+  if (fse.pathExistsSync(configCachedPath)) {
+    fse.removeSync(configCachedPath);
+  }
+}
+
+function ensureStoragePathExists() {
   fse.ensureDirSync(pinkerUserPath + "/storage/app");
   fse.ensureDirSync(pinkerUserPath + "/storage/cache");
   fse.ensureDirSync(pinkerUserPath + "/storage/framework/cache");
@@ -32,6 +41,7 @@ function ensureDatabaseFileExists() {
 fixPath();
 ensureDatabaseFileExists();
 ensureStoragePathExists();
+ensureConfigFileIsDeleted();
 
 // start php server
 const server = new PHPServer({
