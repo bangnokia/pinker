@@ -1,4 +1,11 @@
-const { app, BrowserWindow, nativeImage } = require("electron");
+const {
+  app,
+  BrowserWindow,
+  nativeImage,
+  BrowserView,
+  ipcMain,
+  dialog,
+} = require("electron");
 const { fork, exec } = require("child_process");
 const PHPServer = require("php-server-manager");
 const path = require("path");
@@ -50,17 +57,18 @@ const server = new PHPServer({
 });
 
 function createWindow() {
-  const icon = nativeImage.createFromPath(__dirname + "/assets/icon.icns");
   const win = new BrowserWindow({
     width: 1200,
     height: 690,
     webPreferences: {
-      contextIsolation: true,
+      nodeIntegration: false,
+      preload: basePath + "/preload.js",
+      devTools: true,
     },
     backgroundColor: "#24262f",
-    icon: icon,
+    icon: nativeImage.createFromPath(__dirname + "/assets/icon.icns"),
+    autoHideMenuBar: true,
   });
-
   win.loadURL("http://127.0.0.1:6969");
   win.focus();
 }
@@ -68,6 +76,17 @@ function createWindow() {
 app.whenReady().then(() => {
   server.run();
   createWindow();
+
+  ipcMain.on("openFolder", function (event, args) {
+    const folders = dialog.showOpenDialogSync({
+      title: "Please select a folder",
+      properties: ["openDirectory"],
+    });
+
+    if (folders !== undefined) {
+      event.reply("folderOpened", folders[0]);
+    }
+  });
 });
 
 app.on("window-all-closed", () => {

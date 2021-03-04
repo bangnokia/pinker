@@ -12,37 +12,20 @@
 
     @include('livewire.status-bar', ['project' => $project])
 
-    @if ($showAddProject || $showAddRemoteProject)
+    @if ($showAddRemoteProject)
         <div class="absolute top-1/2 -mt-64 left-0 w-full h-auto flex justify-center z-10">
             <div class="w-2/3 2xl:w-1/2 bg-white p-5 space-x-5 transition transition-all rounded-lg">
-
-                @if ($showAddProject)
-                    <div class="flex space-x-5 relative ">
-                        <div class="w-96">
-                            <livewire:select-folder/>
-                        </div>
-                        <div>
-                            <livewire:recent-projects/>
-                        </div>
-                        <button
-                            class="btn absolute right-0 bottom-0 bg-gray-400 hover:bg-gray-500 px-3 py-1 mt-3 text-white"
-                            wire:click="$emitUp('toggleAddProject')">@lang('Close')</button>
+                <div class="flex space-x-5 relative">
+                    <div class="w-96">
+                        <livewire:form-remote-project />
                     </div>
-                @endif
-
-                @if ($showAddRemoteProject)
-                    <div class="flex space-x-5 relative">
-                        <div class="w-96">
-                            <livewire:form-remote-project />
-                        </div>
-                        <div>
-                            <livewire:list-remote-project />
-                        </div>
-                        <button
-                            class="btn absolute right-0 bottom-0 bg-gray-400 hover:bg-gray-500 px-3 py-1 mt-3 text-white"
-                            wire:click="closePopup">@lang('Close')</button>
+                    <div>
+                        <livewire:list-remote-project />
                     </div>
-                @endif
+                    <button
+                        class="btn absolute right-0 bottom-0 bg-gray-400 hover:bg-gray-500 px-3 py-1 mt-3 text-white"
+                        wire:click="closePopup">@lang('Close')</button>
+                </div>
             </div>
         </div>
     @endif

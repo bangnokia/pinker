@@ -7,8 +7,6 @@ use Livewire\Component;
 
 class Tinker extends Component
 {
-    public $showAddProject = false;
-
     public $showAddRemoteProject = false;
 
     /**
@@ -34,32 +32,32 @@ class Tinker extends Component
 
         $this->project->setAsActive();
 
-        $this->showAddProject = false;
         $this->showAddRemoteProject = false;
 
         $this->emit('projectChanged');
     }
 
-    public function toggleAddProject()
-    {
-        $this->showAddProject = !$this->showAddProject;
-        if ($this->showAddProject === true) {
-            $this->showAddRemoteProject = false;
-        }
-    }
-
     public function toggleAddRemoteProject()
     {
         $this->showAddRemoteProject = !$this->showAddRemoteProject;
-        if ($this->showAddRemoteProject === true) {
-            $this->showAddProject = false;
-        }
     }
 
     public function closePopup()
     {
-        $this->showAddProject = false;
         $this->showAddRemoteProject = false;
+    }
+
+    public function selectDirectory($path)
+    {
+        $this->currentDirectory = $path;
+
+        $project = Project::create([
+            'name' => basename($this->currentDirectory),
+            'path' => $this->currentDirectory,
+            'type' => 'local',
+        ]);
+
+        $this->emit('changeProject', $project->id);
     }
 
     public function render()
