@@ -6,7 +6,7 @@
         <div class="h-full">
             <livewire:output/>
         </div>
-        <div class="vertial-gutter bg-gray-500 row-start-1 col-start-2 w-1" style="cursor: ew-resize"></div>
+        <div class="vertial-gutter bg-gray-700 row-start-1 col-start-2 w-1" style="cursor: ew-resize"></div>
     </div>
 
     @include('livewire.status-bar', ['project' => $project])

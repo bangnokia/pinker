@@ -1,4 +1,4 @@
-<section class="border-r-2 border-gray-500">
+<section>
     <div wire:ignore>
         <textarea wire:model="code" id="editor" style="display: none"></textarea>
     </div>
