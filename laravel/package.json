@@ -19,6 +19,7 @@
     },
     "dependencies": {
         "codemirror": "^5.59.2",
-        "hotkeys-js": "^3.8.2"
+        "hotkeys-js": "^3.8.2",
+        "split-grid": "^1.0.9"
     }
 }

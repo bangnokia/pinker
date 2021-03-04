@@ -1,13 +1,12 @@
 <div class="w-screen h-screen">
-    <div class="tinker flex h-full w-full">
-
-        <div class="w-1/2 editor">
+    <div class="tinker grid h-full w-full" style="grid-template-columns: 1fr 2px 1fr">
+        <div class="h-full editor">
             <livewire:editor :code="$this->project->code ?? ''"/>
         </div>
-
-        <div class="w-1/2">
+        <div class="h-full">
             <livewire:output/>
         </div>
+        <div class="vertial-gutter bg-gray-500 row-start-1 col-start-2 w-1" style="cursor: ew-resize"></div>
     </div>
 
     @include('livewire.status-bar', ['project' => $project])
@@ -29,5 +28,16 @@
             </div>
         </div>
     @endif
+
+    <script>
+        document.addEventListener('livewire:load', function () {
+            window.Split({
+                columnGutters: [{
+                    track: 1,
+                    element: document.querySelector('.vertial-gutter'),
+                }]
+            });
+        });
+    </script>
 
 </div>
