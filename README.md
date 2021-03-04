@@ -5,6 +5,8 @@ Tinker with your laravel (php) application, a lite version of Tinkerwell app xD.
 - MacOS (currently).
 - Windows (not stable because i don't use Windows)
 
+<a class="btn ml-2 btn-primary text-white" href="https://github.com/bangnokia/pinker/releases" title="download">Download</a>
+
 ![](assets/screenshot.png)
 
 ## Requirements
