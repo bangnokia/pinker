@@ -1,7 +1,9 @@
-<div>
+<div class="relative">
     <div wire:ignore>
         <textarea class="p-10 pr-0" id="output" wire:model="output" style="display: none"></textarea>
     </div>
+
+    <x-icons.refresh class="animate-spin h-4 w-4 absolute z-20 top-0 right-0 mr-2 mt-2 text-white" wire:loading />
 
     <script>
         function makeCodeMirror() {
