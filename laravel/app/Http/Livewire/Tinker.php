@@ -18,7 +18,7 @@ class Tinker extends Component
 
     public function mount()
     {
-        $this->project = Project::current();
+        $this->project = Project::openDefault();
     }
 
     public function updatingProjectPath($value)

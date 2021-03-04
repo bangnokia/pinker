@@ -30,16 +30,21 @@ class Project extends Model
     {
         $current = self::where('is_active', true)->first();
 
-        if ($current) {
-            return $current;
-        }
+        
+        return $current ?: $this->openDefault();
+    }
 
-        return Project::create([
+    public static function openDefault()
+    {
+        $project = Project::firstOrCreate([
             'name'      => 'Default',
             'path'      => base_path(),
+        ], [
             'code'      => 'echo "hello";',
             'is_active' => true
         ]);
+
+        return $project->setAsActive();
     }
 
     public function setAsActive()
