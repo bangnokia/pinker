@@ -1,5 +1,5 @@
 <div
-    class="absolute bottom-0 left-0 w-screen bg-gray-400 z-10 px-5 flex space-x-3 font-mono text-sm flex items-center content-center">
+    class="fixed bottom-0 left-0 h-6 w-screen bg-gray-400 z-10 px-5 flex space-x-3 font-mono text-sm flex items-center content-center">
     <x-icons.cloud class="w-5 h-5 cursor-pointer hover:bg-cyan-500" wire:click="toggleAddRemoteProject" title="ssh projects"/>
     <x-icons.folder-open class="w-5 h-5 cursor-pointer hover:bg-cyan-500" onclick="openFolderDialog()" title="local projects"/>
     <div>
