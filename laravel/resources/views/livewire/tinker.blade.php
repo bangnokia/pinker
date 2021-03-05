@@ -1,4 +1,4 @@
-<div class="w-screen h-screen pb-6">
+<div class="w-full h-full pb-6">
     <div class="tinker grid h-full w-full" style="grid-template-columns: 1fr 2px 1fr">
         <div class="h-full editor">
             <livewire:editor :code="$this->project->code ?? ''"/>
