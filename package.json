@@ -9,7 +9,8 @@
     "build-laravel": "cd laravel && php artisan migrate:fresh --seed && php artisan cache:clear && php artisan config:clear && php artisan key:generate && npm run production && cd ../ && if [ -f  database.sqlite ]; then mv database.sqlite database.sqlite.example; fi",
     "build": "npm run build-laravel && npm run build-mac && npm run build-win",
     "build-mac": "electron-packager . --icon=assets/icon.icns --ignore=laravel/node_module --platform=darwin --arch=x64 --out=builds --overwrite",
-    "build-win": "electron-packager . --icon=assets/icon.ico --ignore=laravel/node_module --platform=win32 --arch=x64 --out=builds --overwrite"
+    "build-win": "electron-packager . --icon=assets/icon.ico --ignore=laravel/node_module --platform=win32 --arch=x64 --out=builds --overwrite",
+    "build-linux": "electron-packager . --icon=assets/icon.png --ignore=laravel/node_module --platform=linux --arch=x64 --out=builds --overwrite"
   },
   "keywords": [],
   "author": "bangnokia",
