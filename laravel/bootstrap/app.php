@@ -11,7 +11,9 @@
 |
 */
 
-$app = new \App\Application(
+
+
+$app = new App\Application(
     $_ENV['APP_BASE_PATH'] ?? dirname(__DIR__)
 );
 
@@ -40,6 +42,8 @@ $app->singleton(
     Illuminate\Contracts\Debug\ExceptionHandler::class,
     App\Exceptions\Handler::class
 );
+
+// dd(user_home_dir().DIRECTORY_SEPARATOR.'.pinker'.DIRECTORY_SEPARATOR.'storage');
 
 $app->useStoragePath(user_home_dir().DIRECTORY_SEPARATOR.'.pinker'.DIRECTORY_SEPARATOR.'storage');
 
