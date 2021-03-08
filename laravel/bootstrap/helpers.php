@@ -1,6 +1,6 @@
 <?php
 
-function user_home_dir() {
+function user_home_dir() {	
 	if (PHP_OS_FAMILY === 'Windows') {			
 	
 		if (getenv('HOME')) {
@@ -17,6 +17,8 @@ function user_home_dir() {
 
 		return $_SERVER['USERPROFILE'] ?? '';
 	}
+
+	// var_dump(posix_getpwuid(posix_getuid())['dir']);
 
 	return posix_getpwuid(posix_getuid())['dir'];
 }
