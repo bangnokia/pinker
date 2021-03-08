@@ -1,6 +1,6 @@
 {
   "name": "pinker",
-  "productName": "Pinker",
+  "productName": "pinker",
   "version": "1.0.0",
   "description": "Pinker gonna tinker you",
   "main": "index.js",
@@ -10,7 +10,8 @@
     "build": "npm run build-laravel && npm run build-mac && npm run build-win",
     "build-mac": "electron-packager . --icon=assets/icon.icns --ignore=laravel/node_module --platform=darwin --arch=x64 --out=builds --overwrite",
     "build-win": "electron-packager . --icon=assets/icon.ico --ignore=laravel/node_module --platform=win32 --arch=x64 --out=builds --overwrite",
-    "build-linux": "electron-packager . --icon=assets/icon.png --ignore=laravel/node_module --platform=linux --arch=x64 --out=builds --overwrite"
+    "build-linux": "electron-packager . --icon=assets/icon.png --ignore=laravel/node_module --platform=linux --arch=x64 --out=builds --overwrite",
+    "make": "electron-installer-debian --src builds/pinker-linux-x64/ --arch arm64 --config debian.json"
   },
   "keywords": [],
   "author": "bangnokia",
@@ -18,9 +19,10 @@
   "devDependencies": {
     "electron": "^11.2.1",
     "electron-packager": "^15.2.0",
-    "electron-reloader": "^1.2.0"
+    "electron-reloader": "^1.2.0",
+    "electron-installer-debian": "^3.1.0"
   },
-  "dependencies": {
+  "dependencies": {    
     "fix-path": "^3.0.0",
     "fs-extra": "^9.1.0",
     "php-server-manager": "^1.3.3"
