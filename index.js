@@ -61,7 +61,7 @@ function createWindow() {
     width: 1200,
     height: 690,
     webPreferences: {
-      contextIsolation: true,
+      contextIsolation: false,
       nodeIntegration: false,
       preload: basePath + "/preload.js",
       devTools: true,
