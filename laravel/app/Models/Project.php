@@ -30,7 +30,7 @@ class Project extends Model
     {
         $current = self::where('is_active', true)->first();
 
-        
+
         return $current ?: $this->openDefault();
     }
 

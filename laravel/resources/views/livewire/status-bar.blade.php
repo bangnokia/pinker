@@ -11,7 +11,7 @@
              title="{{ $project->path }}">{{ $project->path }}</div>
     </div>
 
-    
+
     <script>
         document.addEventListener('livewire:load', function () {
             window.ipcRenderer.on('folderOpened', function (event, path) {
