@@ -1,9 +1,9 @@
 <div class="w-full h-full pb-6">
     <div class="tinker grid w-full h-full" style="grid-template-columns: 1fr 2px 1fr">
-        <div class="h-full editor" style="max-height: calc(100vh - 1.5rem)">
+        <div class="h-full editor overflow-x-hidden overflow-y-auto" style="max-height: calc(100vh - 1.5rem)">
             <livewire:editor :code="$this->project->code ?? ''"/>
         </div>
-        <div class="h-full" style="max-height: calc(100vh - 1.5rem)">
+        <div class="h-full overflow-x-hidden overflow-y-auto" style="max-height: calc(100vh - 1.5rem)">
             <livewire:output/>
         </div>
         <div class="vertial-gutter bg-gray-700 row-start-1 col-start-2 w-1" style="cursor: ew-resize"></div>
