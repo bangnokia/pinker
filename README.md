@@ -1,6 +1,6 @@
 # pinker
 
-Tinker with your laravel (php) application, a lite version of Tinkerwell app xD. It's can running on local or remote project (via SSH).
+Tinker with your laravel (php) application, a lite version of Tinkerwell app xD. It's can running on local or remote project (via SSH). If you want to know how pinker works, you can check out my [blog post](https://daudau.cc/posts/how-to-tinker-with-any-php-applications.html).
 
 - MacOS (currently).
 - Windows (not stable because i don't use Windows)
