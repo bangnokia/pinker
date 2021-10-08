@@ -1,4 +1,4 @@
-# pinker
+# pinkerdm
 
 Tinker with your laravel (php) application, a lite version of Tinkerwell app xD. It's can running on local or remote project (via SSH). If you want to know how pinker works, you can check out my [blog post](https://daudau.cc/posts/how-to-tinker-with-any-php-applications.html).
 
@@ -6,6 +6,8 @@ Tinker with your laravel (php) application, a lite version of Tinkerwell app xD.
 - Windows (not stable because i don't use Windows)
 
 <a class="btn ml-2 btn-primary text-white" href="https://github.com/bangnokia/pinker/releases" title="download">Download</a>
+
+## This project is not develop anymore, please checkout new my Tinker2 app
 
 ![](assets/screenshot.png)
 
