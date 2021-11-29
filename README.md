@@ -1,4 +1,6 @@
 # pinker
+ 
+ **This project is archived, please use [Tinker 2 app](https://tinker2.app) instead.**
 
 Tinker with your laravel (php) application, a lite version of Tinkerwell app xD. It's can running on local or remote project (via SSH). If you want to know how pinker works, you can check out my [blog post](https://daudau.cc/posts/how-to-tinker-with-any-php-applications.html).
 
